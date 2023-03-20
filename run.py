@@ -16,38 +16,22 @@ class Employee:
     
     def apply_raise(self):
         self.pay= int(self.pay * self.raise_amount)
+    def __repr__(self): # is used for debugging and loging (recreate object)
+        return "Employee('{}','{}', '{}')".format(self.first_name, self.last_name, self.pay)
     
-class Developer(Employee):
-    raise_amount=1.10
-    def __init__(self, first_name, last_name, pay, prog_lang):
-        super().__init__(first_name, last_name, pay)
-        self.prog_lang= prog_lang
+    def __str__(self): # is used as a display to enduser
+        return '{}-{}'.format(self.fullname(),self.email)
+    
+    def __add__(self, other):
+         return self.pay + other.pay
+    
+emp_1= Employee('John', 'Eduin', 600000)
+emp_2= Employee('Jacque', 'Milla', 480000)
 
-class Manager(Employee):
-    def __init__(self, first_name, last_name, pay, employees= None):
-        super().__init__(first_name, last_name, pay)
-        if employees is None:
-            self.employees= []
-        else:
-            self.employees= employees
 
-    def add_emp(self,emp):
-        if emp not in self.employees:
-            self.employees.append(emp)
 
-    def remove_emp(self,emp):
-        if emp in self.employees:
-            self.employees.remove(emp)
-
-    def print_emps(self):
-        for emp in self.employees:
-            print('-->', emp.fullname())     
-
-dev_1= Developer('John', 'Eduin', 600000, 'python')
-dev_2= Developer('Jacque', 'Milla', 480000, 'c++')
-
-mngr_1= Manager('king','smith', 105000,[dev_1])
-
-print(isinstance(mngr_1, Developer))
-print(issubclass(Manager, Developer))
-print(issubclass(Developer, Employee))
+print(emp_1+emp_2)
+# print(repr(emp_1))
+# print(str(emp_1))
+# print(emp_1.__repr__())
+# print(emp_1.__str__())
