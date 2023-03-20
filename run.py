@@ -14,16 +14,26 @@ class Employee:
     def apply_raise(self):
         self.pay= int(self.pay * self.raise_amount)
     
-    # @classmethod  # Here we receive a class as our first argument instead self instance
-    # def set_raise_amount(cls, amount):
-    #     cls.raise_amount= amount
-    # @classmethod
-    # def from_string(cls, emp_str):
-    #     first_name, last_name, pay= emp_str.split('-')
-    #     return cls(first_name, last_name,pay)
+    @classmethod  # Here we receive a class as our first argument instead self instance
+    def set_raise_amount(cls, amount):
+        cls.raise_amount= amount
+    @classmethod
+    def from_string(cls, emp_str):
+        firstname, lastname, pay= emp_str.split('-')
+        return cls(firstname, lastname, pay)
 
 emp_1= Employee('John', 'Eduin', 600000)
 emp_2= Employee('Jacque', 'Milla', 480000)
-print(emp_1.raise_amount)
-print(Employee.raise_amount)
-print(emp_2.raise_amount)
+
+# employee details separated by - 
+emp_str1= 'Jean-kamana-9000'
+emp_str2= 'kamanzi-claude-1000'
+emp_str3='kamikazi-claudine-70000'
+
+newemp= Employee.from_string(emp_str1)
+newemp1= Employee.from_string(emp_str2)
+print(newemp.first_name, newemp.last_name, newemp.pay)
+print(newemp1.first_name, newemp1.last_name, newemp1.pay)
+
+
+
