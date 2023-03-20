@@ -21,19 +21,14 @@ class Employee:
     def from_string(cls, emp_str):
         firstname, lastname, pay= emp_str.split('-')
         return cls(firstname, lastname, pay)
-
+    def is_work_day(day):
+        if day.weekday()==5 or day.weekday()==6:
+            return 'Is not a working day'
+        return 'Is working day'
+    
 emp_1= Employee('John', 'Eduin', 600000)
 emp_2= Employee('Jacque', 'Milla', 480000)
 
-# employee details separated by - 
-emp_str1= 'Jean-kamana-9000'
-emp_str2= 'kamanzi-claude-1000'
-emp_str3='kamikazi-claudine-70000'
-
-newemp= Employee.from_string(emp_str1)
-newemp1= Employee.from_string(emp_str2)
-print(newemp.first_name, newemp.last_name, newemp.pay)
-print(newemp1.first_name, newemp1.last_name, newemp1.pay)
-
-
-
+import datetime
+my_date= datetime.date(2022,7,11)
+print(Employee.is_work_day(my_date))
