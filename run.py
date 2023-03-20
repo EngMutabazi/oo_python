@@ -47,7 +47,7 @@ dev_1= Developer('John', 'Eduin', 600000, 'python')
 dev_2= Developer('Jacque', 'Milla', 480000, 'c++')
 
 mngr_1= Manager('king','smith', 105000,[dev_1])
-print(mngr_1.email)
-mngr_1.add_emp(dev_2)
-mngr_1.remove_emp(dev_1)
-mngr_1.print_emps()
+
+print(isinstance(mngr_1, Developer))
+print(issubclass(Manager, Developer))
+print(issubclass(Developer, Employee))
